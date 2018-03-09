@@ -1,0 +1,5 @@
+mongodb使用规则
+
+1、首先下载MongoDB
+2、然后使用npm install mongoose -save安装mongoose
+3、引入mongoose库

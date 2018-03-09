@@ -1,0 +1,3 @@
+react-router使用规则
+
+1、如果不是路由组件的话，是获取不到this.props.history的，只能通过引入withRouter来获取

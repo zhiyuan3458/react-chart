@@ -1,0 +1,30 @@
+redux使用规则
+
+1、redux要素：action、state、dispatch、store
+2、通过reducer（是函数来的），把旧的state和action传进去reducer函数中，生成新的state
+3、通过dispatch改变action（action是对象），并主动触发reducer函数（一般这样写store.dispatch({type: ...})）
+4、store可以获取到state，通过store.getState()方法获取
+5、store.subscribe(listener)来订阅（监听）listener函数，一旦dispatch触发了reducer就会执行listener函数
+6、store通过引入redux的createStore创建store
+
+
+
+一般来说，会独立创建爱你一个redux文件，里面有reducer函数和action  creator函数
+
+
+redux处理异步请求
+1、redux需要引入redux-thunk插件，npm install redux-thunk --save
+2、使用applyMiddleware(用来加载中间件的插件)开启thunk中间件（有了中间件后action（action creator）就可以返回一个函数），
+使用dispatch提交action
+
+
+首先const store = createStore(reducer, applyMiddleware(thunk))
+然后在redux.js中建立一个函数：
+// 其中add函数是一个action creator,dispatch用来提交action触发reducer
+function addSync() {
+    return dispatch => {
+        setTimeout(function() {
+            dispatch(add());
+        }, 2000);
+    }
+}
