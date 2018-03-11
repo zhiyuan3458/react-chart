@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Button, WhiteSpace, WingBlank, List, InputItem, Radio} from 'antd-mobile';
+import {Button, WhiteSpace, WingBlank, List, InputItem, Radio, Toast} from 'antd-mobile';
 import Logo from "../../components/logo/logo";
 import { register } from 'src/redux/user.redux';
 import './less/register.less';
@@ -31,7 +31,6 @@ class Register extends React.Component {
     // 点击注册按钮
     handleRegister() {
         this.props.register(this.state);
-        console.log(this.props);
     }
 
     render() {

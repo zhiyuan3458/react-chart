@@ -1,7 +1,6 @@
 import React from 'react';
 import {List, Button, WingBlank, InputItem, WhiteSpace} from 'antd-mobile';
 import Logo from 'src/components/logo/logo';
-import axios from 'axios';
 
 class Login extends React.Component {
     constructor(props) {

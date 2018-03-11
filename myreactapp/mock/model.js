@@ -8,7 +8,8 @@ mongoose.connection.on('connected', function () {
 // 创建一个model，相当于一个表
 const users = mongoose.model('users', new mongoose.Schema({
     'name': {type: String, require: true},
-    'age': {type: Number, require: true}
+    'password': {type: Number, require: true},
+    'type': {type: String, require: true}
 }));
 
 module.exports = users;

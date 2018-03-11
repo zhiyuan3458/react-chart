@@ -15,7 +15,7 @@ class AuthRoute extends React.Component {
             if(res.status === 200) {
                 let code = res.data.code;
                 if(code === ERR_OK) {
-                    console.log(res.data.data);
+                    // console.log(res.data.data);
                 }else {
                     this.props.history.push('/login');
                 }

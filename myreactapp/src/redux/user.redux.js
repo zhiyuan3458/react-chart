@@ -15,8 +15,8 @@ const initState = {
 // reducer
 export function user(state= initState, action) {
     switch (action.type) {
-        case REGISTER_SUCCESS: return {...state, isAuth: true, data: action.payload, msg: ''};
-        case ERR: return {...state, isAuth: false, msg: action.msg};
+        case REGISTER_SUCCESS: return {isAuth: true, msg: action.msg, success: true};
+        case ERR: return {...state, isAuth: false, msg: action.msg,success: false};
         default: return state;
     }
 }
@@ -25,9 +25,8 @@ function errMsg(msg) {
     return {msg, type: ERR};
 }
 
-function registSuccess(obj) {
-    console.log(obj);
-    return {payload: obj,type: REGISTER_SUCCESS};
+function registSuccess(msg) {
+    return {msg: msg,type: REGISTER_SUCCESS};
 }
 
 export function register({ name,password,repeatPwd,type }) {
@@ -42,8 +41,9 @@ export function register({ name,password,repeatPwd,type }) {
         axios.post('/user/register',{name,password, type}).then(res => {
             if(res.status === 200) {
                 let code = res.data.code;
+                let msg = res.data.msg;
                 if(code === ERR_OK) {
-                    dispatch(registSuccess({name, password, type}));
+                    dispatch(registSuccess(msg));
                 }else {
                     dispatch(errMsg(res.data.msg));
                 }
